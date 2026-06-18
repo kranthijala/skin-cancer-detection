@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Melanoma Detection - Chart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tooplate-gymso-styles.css') }}">
+
+    <!-- Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Class', 'Percentage'],
+                ['Benign Melanoma Lesion', 40],
+                ['Malignant Melanoma Lesion', 50]
+            ]);
+
+            var options = {
+                title: 'Melanoma Detection Results',
+                is3D: true,
+                backgroundColor: 'transparent'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    {% include 'navbar.html' %}
+
+    <!-- Hero Section -->
+    <section class="hero d-flex flex-column justify-content-center align-items-center">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <h1 class="text-white text-center">Melanoma Detection - Chart</h1>
+        </div>
+    </section>
+
+    <!-- Chart Section -->
+    <section class="contact section">
+        <div class="container text-center">
+            <h2>Melanoma Detection Results</h2>
+            <div id="piechart_3d" style="width: 900px; height: 500px; margin: auto;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+
+    <!-- Scripts -->
+    {% include 'scripts.html' %}
+</body>
+</html>

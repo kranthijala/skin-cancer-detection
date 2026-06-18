@@ -1,0 +1,7 @@
+Melanoma Detection Using Convolutional Neural Network
+
+Model: VGG16 architecture
+
+Accuracy score:  0.8409
+
+
